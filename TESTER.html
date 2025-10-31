@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sergio Miranda Herrera · IT Support</title>
+  <meta name="description" content="IT-support focused profile for Sergio Miranda Herrera: calm under pressure, bilingual, team-first." />
+  <meta name="theme-color" content="#0b0e11" />
+  <style>
+    :root{
+      /* Dark (default) */
+      --bg:#0b0e11; --bg-2:#12161c; --card:#151a22;
+      --text:#e9edf2; --muted:#b5bec8; --cream:#f5f0e6;
+      --blue:#4b91ff; --blue-2:#1f4aa9; --border:#202733;
+      --shadow:0 10px 30px rgba(0,0,0,.35); --max:1100px;
+      --chip-bg: var(--bg-2);
+      --link: var(--cream);
+      --progress:#4b91ff;
+    }
+    /* Light theme overrides */
+    body.light{
+      --bg:#f7f8fa; --bg-2:#ffffff; --card:#ffffff;
+      --text:#0b0e11; --muted:#526070; --cream:#2c3a4b;
+      --blue:#2d6cff; --blue-2:#1f4aa9; --border:#d7dde6;
+      --shadow:0 8px 22px rgba(0,0,0,.08);
+      --chip-bg:#f2f5f9;
+      --link:#1b3a6e;
+      --progress:#2d6cff;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; line-height:1.6; color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 20% -10%, rgba(75,145,255,.08), transparent 60%),
+        radial-gradient(1000px 700px at 90% 10%, rgba(245,240,230,.05), transparent 60%),
+        var(--bg);
+      background-attachment: fixed;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    }
+    a{color:var(--link);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{width:min(var(--max),92%);margin-inline:auto}
+
+    /* TOP SCROLL PROGRESS */
+    .progressbar{
+      position:fixed;left:0;top:0;height:3px;width:100%;z-index:9999;pointer-events:none;
+      background:linear-gradient(to right,var(--progress),var(--blue-2));
+      transform-origin:left center; transform:scaleX(0);
+    }
+
+    /* Header */
+    .site-header{position:sticky;top:0;z-index:50;background:rgba(11,14,17,.65);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+    body.light .site-header{background:rgba(255,255,255,.75)}
+    .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0}
+    .brand{font-weight:700;letter-spacing:.3px}
+    .brand-dot{color:var(--blue);margin-right:.5rem}
+    .site-nav .nav-list{list-style:none;display:flex;gap:1rem;padding:0;margin:0}
+    .site-nav a{padding:.4rem .6rem;border-radius:6px}
+    .site-nav a:hover{background:var(--bg-2);text-decoration:none}
+    .nav-toggle{display:none;background:none;border:1px solid var(--border);color:var(--text);padding:.45rem .6rem;border-radius:8px}
+    .theme-toggle{margin-left:.5rem;border:1px solid var(--border);background:var(--bg-2);color:var(--text);padding:.45rem .65rem;border-radius:8px;cursor:pointer}
+    @media(max-width:800px){
+      .nav-toggle{display:block}
+      .site-nav .nav-list{display:none;position:absolute;right:4%;top:60px;background:var(--bg-2);border:1px solid var(--border);border-radius:10px;padding:.6rem;width:min(280px,92%);box-shadow:var(--shadow)}
+      .site-nav .nav-list.open{display:block}
+    }
+
+    /* Hero */
+    .hero{padding:6rem 0 4rem}
+    .eyebrow{color:var(--muted);text-transform:uppercase;letter-spacing:.2em;font-size:.8rem;margin:0 0 .6rem}
+    .hero h1{font-size:clamp(1.6rem,2.2rem + 1vw,3rem);line-height:1.15;margin:0 0 1rem}
+    .lead{font-size:1.06rem;color:var(--muted);max-width:65ch}
+    .highlight{background:linear-gradient(90deg,var(--cream),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .cta-row{margin-top:1.25rem;display:flex;gap:.8rem;flex-wrap:wrap}
+    .btn{display:inline-block;border:1px solid var(--border);padding:.7rem 1rem;border-radius:10px;font-weight:700;letter-spacing:.2px;transition:all .2s ease;}
+    .btn.primary{background:linear-gradient(180deg,var(--blue),var(--blue-2));color:#fff;border-color:transparent}
+    .btn.primary:hover{box-shadow:0 0 15px rgba(75,145,255,0.6);transform:translateY(-2px);}
+    .btn.ghost{background:transparent;color:var(--cream);border:1px solid var(--border)}
+    .chips{display:flex;gap:.6rem;flex-wrap:wrap;padding:0;list-style:none}
+    .chip{border:1px solid var(--border);background:var(--chip-bg);padding:.45rem .6rem;border-radius:999px;font-size:.95rem}
+
+    .section{padding:3.5rem 0}
+
+    /* Cards / Tiles */
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      padding:1rem;
+      border-radius:12px;
+      box-shadow:var(--shadow);
+      margin-bottom:1.2rem;
+      transition:transform .2s ease,box-shadow .2s ease,opacity .6s ease,transform .6s ease;
+    }
+    .card:hover{ transform:translateY(-3px); box-shadow:0 6px 18px rgba(0,0,0,0.4); }
+    body.light .card:hover{ box-shadow:0 10px 24px rgba(0,0,0,0.14) }
+    ul.clean{list-style:none;margin:0;padding:0}
+    ul.clean li{margin:.4rem 0}
+
+    /* Reveal on scroll (loop as you scroll) */
+    .reveal{opacity:0; transform:translateY(18px); will-change: opacity, transform;}
+    .reveal.visible{opacity:1; transform:translateY(0);}
+
+    /* Contact specific subtle emphasis */
+    .contact-lead{color:var(--muted);max-width:600px;margin:0 auto 1.2rem;opacity:0;transform:translateY(10px);transition:opacity .6s ease, transform .6s ease;}
+    .contact-lead.visible{opacity:1;transform:translateY(0);}
+
+    /* Footer */
+    .site-footer{border-top:1px solid var(--border);padding:2rem 0;color:var(--muted);text-align:center}
+    .back-to-top{position:fixed;right:1rem;bottom:1rem;border-radius:999px;padding:.6rem .8rem;border:1px solid var(--border);background:var(--bg-2);color:var(--text);display:none}
+    .back-to-top.show{display:block}
+
+    /* Reduce motion */
+    @media (prefers-reduced-motion: reduce){
+      .reveal,.contact-lead{opacity:1 !important;transform:none !important;}
+      .card,.btn{transition:none}
+    }
+  </style>
+</head>
+<body>
+  <!-- Scroll progress bar -->
+  <div class="progressbar" id="progressBar"></div>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#"><span class="brand-dot">●</span>Sergio Miranda Herrera</a>
+      <div>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">☰</button>
+        <button class="theme-toggle" id="themeBtn" aria-label="Toggle color theme">🌙</button>
+      </div>
+      <nav class="site-nav" aria-label="Primary">
+        <ul id="nav-menu" class="nav-list">
+          <li><a href="#about">About</a></li><li><a href="#experience">Experience</a></li>
+          <li><a href="#education">Education</a></li><li><a href="#volunteering">Volunteering</a></li>
+          <li><a href="#skills">Skills</a></li><li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero reveal">
+      <div class="container">
+        <p class="eyebrow">College · IT Support · Bilingual</p>
+        <h1>Hi, I’m <span class="highlight">Sergio</span>. I stay calm under pressure, learn fast, and help people use tech without stress.</h1>
+        <p class="lead">I like turning messy problems into simple steps and working with a team to get things done. I communicate clearly in English and Spanish and keep a respectful vibe even when it’s busy.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#contact">Contact Me</a>
+          <a class="btn ghost" href="#about">Learn More</a>
+        </div>
+        <ul class="chips" style="margin-top:1rem">
+          <li class="chip">Lincoln, Nebraska</li>
+          <li class="chip">Catholic</li>
+          <li class="chip">English & Español</li>
+          <li class="chip">Windows · Linux</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section reveal">
+      <div class="container">
+        <h2>About</h2>
+        <p>I’m studying Computer Support at Southeast Community College, building experience in both customer service and technical problem-solving. My work in hospitality and trades taught me how to stay organized, communicate clearly, and finish every job right the first time.</p>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="section reveal">
+      <div class="container">
+        <h2>Experience</h2>
+        <article class="card reveal">
+          <h3>Host · Salty’s Lodge · Lincoln, NE <span style="float:right">Dec 2024 to Present</span></h3>
+          <ul class="clean">
+            <li>Ensure excellent guest experiences by greeting, coordinating seating, and assisting large parties.</li>
+            <li>Maintain a positive environment while working in a fast-paced team setting.</li>
+          </ul>
+        </article>
+        <article class="card reveal">
+          <h3>Insulation Installer · GBSI · Lincoln, NE <span style="float:right">May 2022 to Present</span></h3>
+          <ul class="clean">
+            <li>Insulate ductwork and pipes to support temperature efficiency and safety.</li>
+            <li>Work independently and in teams following safety and quality standards.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="section reveal">
+      <div class="container">
+        <h2>Education</h2>
+        <article class="card reveal">
+          <h3>Southeast Community College · A.A.S., Computer Support Specialist <span style="float:right">Aug 2024 to May 2026</span></h3>
+          <ul class="clean">
+            <li>Learning core IT systems, troubleshooting, and client support skills.</li>
+            <li>Focused on clear, step-by-step problem-solving methods.</li>
+          </ul>
+        </article>
+        <article class="card reveal">
+          <h3>Pius X High School · High School Diploma <span style="float:right">Aug 2020 to May 2024</span></h3>
+        </article>
+      </div>
+    </section>
+
+    <!-- Volunteering -->
+    <section id="volunteering" class="section reveal">
+      <div class="container">
+        <h2>Volunteering</h2>
+        <article class="card reveal">
+          <h3>Cristo Rey Catholic Church · Youth Ministry Support <span style="float:right">Aug 2024 to Present</span></h3>
+          <ul class="clean">
+            <li>Help lead youth activities and assist in preparing lessons and group events.</li>
+            <li>Support the team in creating a fun, welcoming faith community.</li>
+          </ul>
+        </article>
+        <article class="card reveal">
+          <h3>Christ in the City · Volunteer <span style="float:right">Jun 2022</span></h3>
+          <ul class="clean">
+            <li>Spent time with the homeless community in Denver, sharing meals and conversations.</li>
+            <li>Assisted with meal prep and served alongside other volunteers.</li>
+          </ul>
+        </article>
+        <article class="card reveal">
+          <h3>Pius X High School · Office Assistant <span style="float:right">Aug 2021 to May 2024</span></h3>
+          <ul class="clean">
+            <li>Delivered notes, set up for school events, and helped staff as part of a student assistant program.</li>
+          </ul>
+        </article>
+        <article class="card reveal">
+          <h3>Missionaries of Charity · Volunteer (Denver, CO) <span style="float:right">May 2022</span></h3>
+          <ul class="clean">
+            <li>Prepared supplies and helped with daily tasks at a local mission center.</li>
+            <li>Worked alongside others to serve the community respectfully.</li>
+          </ul>
+        </article>
+        <article class="card reveal">
+          <h3>Pius X High School · Soccer Team Manager <span style="float:right">Mar 2024 to May 2024</span></h3>
+          <ul class="clean">
+            <li>Assisted coaches with equipment, practice setup, and drills to support team efficiency.</li>
+          </ul>
+        </article>
+        <article class="card reveal">
+          <h3>FoodNet · Grocery Distributor (Lincoln, NE) <span style="float:right">Mar 2024 to Apr 2024</span></h3>
+          <ul class="clean">
+            <li>Helped sort and distribute groceries to families in need in the Lincoln area.</li>
+            <li>Worked with other volunteers to reduce food waste and serve others.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section reveal">
+      <div class="container">
+        <h2>Skills</h2>
+        <div class="chips">
+          <span class="chip">Spanish / Español</span>
+          <span class="chip">Critical Thinking</span>
+          <span class="chip">Collaborative Problem Solving</span>
+          <span class="chip">Windows</span>
+          <span class="chip">Linux</span>
+          <span class="chip">Customer Service</span>
+          <span class="chip">Teamwork</span>
+          <span class="chip">Reliability</span>
+          <span class="chip">Microsoft Applications</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section reveal">
+      <div class="container" style="text-align:center">
+        <h2 class="reveal">Let's Connect!</h2>
+        <p class="contact-lead">Whether it’s about technology, collaboration, or new ideas, I’m open to meaningful connections.</p>
+        <ul class="chips" style="margin-top:1rem;justify-content:center">
+          <li class="chip"><a href="mailto:sergiomirandaherrera344@gmail.com">sergiomirandaherrera344@gmail.com</a></li>
+          <li class="chip"><a href="https://www.linkedin.com/in/sergio-m-8667612b6" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer reveal">
+    <p>© <span id="year"></span> Sergio Miranda Herrera. All rights reserved.</p>
+    <p style="margin-top:.3rem;font-size:.9rem;">Last updated: <span id="lastUpdated"></span></p>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
+
+  <script>
+    // Theme (respect system on first visit, then remember)
+    const saved = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if(saved){ document.body.classList.toggle('light', saved === 'light'); }
+    else { document.body.classList.toggle('light', !prefersDark); }
+
+    // Toggle menu
+    const toggle=document.querySelector('.nav-toggle');
+    const menu=document.getElementById('nav-menu');
+    if(toggle){
+      toggle.addEventListener('click',()=>{const open=menu.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));});
+    }
+
+    // Theme toggle button
+    const themeBtn = document.getElementById('themeBtn');
+    function setThemeIcon(){ themeBtn.textContent = document.body.classList.contains('light') ? '🌞' : '🌙'; }
+    setThemeIcon();
+    themeBtn.addEventListener('click',()=>{
+      document.body.classList.toggle('light');
+      localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+      setThemeIcon();
+    });
+
+    // Back-to-top + footer meta
+    const topBtn=document.getElementById('backToTop');
+    window.addEventListener('scroll',()=>{ if(window.scrollY>600) topBtn.classList.add('show'); else topBtn.classList.remove('show'); });
+    topBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+    document.getElementById('year').textContent=new Date().getFullYear();
+    document.getElementById('lastUpdated').textContent=new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+
+    // Reveal-on-scroll (loops)
+    const prefersReduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!prefersReduce){
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){ entry.target.classList.add('visible'); }
+          else { entry.target.classList.remove('visible'); } // animate again on re-enter
+        });
+      }, {threshold: 0.12, rootMargin: "0px 0px -10% 0px"});
+      document.querySelectorAll('.reveal, .card, .contact-lead').forEach(el=>io.observe(el));
+    }
+
+    // Subtle parallax background shift
+    const parallax = ()=>{
+      const y = window.scrollY || window.pageYOffset;
+      const shift1 = Math.min(40, y*0.06);
+      const shift2 = Math.min(25, y*0.04);
+      document.body.style.backgroundPosition = `20% -${shift1}px, 90% ${shift2}px, 0 0`;
+    };
+    if(!prefersReduce){
+      window.addEventListener('scroll', parallax, {passive:true});
+      parallax();
+    }
+
+    // Scroll progress bar
+    const progress = document.getElementById('progressBar');
+    const updateProgress = ()=>{
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docH = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+      const winH = window.innerHeight;
+      const max = docH - winH;
+      const pct = max > 0 ? (scrollTop / max) : 0;
+      progress.style.transform = `scaleX(${pct})`;
+    };
+    window.addEventListener('scroll', updateProgress, {passive:true});
+    window.addEventListener('resize', updateProgress);
+    updateProgress();
+  </script>
+</body>
+</html>
