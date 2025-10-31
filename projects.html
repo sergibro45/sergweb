@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Projects · Sergio Miranda Herrera</title>
+  <meta name="description" content="Projects by Sergio Miranda Herrera — coming soon." />
+  <meta name="theme-color" content="#0b0e11" />
+  <style>
+    :root{
+      --bg:#0b0e11; --bg-2:#12161c; --card:#151a22;
+      --text:#e9edf2; --muted:#b5bec8; --cream:#f5f0e6;
+      --blue:#4b91ff; --blue-2:#1f4aa9; --border:#202733;
+      --shadow:0 10px 30px rgba(0,0,0,.35); --max:1100px;
+      --chip-bg: var(--bg-2); --link: var(--cream); --progress:#4b91ff;
+    }
+    body.light{
+      --bg:#f7f8fa; --bg-2:#ffffff; --card:#ffffff;
+      --text:#0b0e11; --muted:#526070; --cream:#2c3a4b;
+      --blue:#2d6cff; --blue-2:#1f4aa9; --border:#d7dde6;
+      --shadow:0 8px 22px rgba(0,0,0,.08);
+      --chip-bg:#f2f5f9; --link:#1b3a6e; --progress:#2d6cff;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; line-height:1.6; color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 20% -10%, rgba(75,145,255,.08), transparent 60%),
+        radial-gradient(1000px 700px at 90% 10%, rgba(245,240,230,.05), transparent 60%),
+        var(--bg);
+      background-attachment: fixed;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    }
+    a{color:var(--link);text-decoration:none} a:hover{text-decoration:underline}
+    .container{width:min(var(--max),92%);margin-inline:auto}
+
+    /* Header (same style as home) */
+    .site-header{position:sticky;top:0;z-index:50;background:rgba(11,14,17,.65);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+    body.light .site-header{background:rgba(255,255,255,.75)}
+    .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0}
+    .brand{font-weight:700;letter-spacing:.3px}
+    .brand-dot{color:var(--blue);margin-right:.5rem}
+    .site-nav .nav-list{list-style:none;display:flex;gap:1rem;padding:0;margin:0}
+    .site-nav a{padding:.4rem .6rem;border-radius:6px}
+    .site-nav a:hover{background:var(--bg-2);text-decoration:none}
+    .nav-toggle{display:none;background:none;border:1px solid var(--border);color:var(--text);padding:.45rem .6rem;border-radius:8px}
+    .theme-toggle{margin-left:.5rem;border:1px solid var(--border);background:var(--bg-2);color:var(--text);padding:.45rem .65rem;border-radius:8px;cursor:pointer}
+    @media(max-width:800px){
+      .nav-toggle{display:block}
+      .site-nav .nav-list{display:none;position:absolute;right:4%;top:60px;background:var(--bg-2);border:1px solid var(--border);border-radius:10px;padding:.6rem;width:min(280px,92%);box-shadow:var(--shadow)}
+      .site-nav .nav-list.open{display:block}
+    }
+
+    /* Content */
+    main{min-height:70vh;display:grid;place-items:center;padding:5rem 0}
+    .card{
+      background:var(--card); border:1px solid var(--border); box-shadow:var(--shadow);
+      border-radius:16px; padding:2rem; text-align:center; max-width:780px; width:min(92vw,780px);
+      transition:transform .2s ease, box-shadow .2s ease, opacity .6s ease, transform .6s ease;
+    }
+    .card:hover{ transform:translateY(-3px); box-shadow:0 6px 18px rgba(0,0,0,0.4); }
+    h1{margin:.2rem 0 0; font-size:clamp(1.6rem,1.2rem + 1.8vw,2.4rem)}
+    p.lead{color:var(--muted);margin:.5rem 0 0}
+
+    .img-wrap{
+      display:flex;align-items:center;justify-content:center;
+      background:var(--bg-2);border:1px dashed var(--border);border-radius:12px;
+      padding:1rem; margin:0 auto 1rem; width:min(520px,90%); aspect-ratio: 4 / 3;
+    }
+    .pixel{image-rendering:pixelated; width:100%; height:100%}
+
+    .site-footer{border-top:1px solid var(--border);padding:2rem 0;color:var(--muted);text-align:center}
+
+    .reveal{opacity:0; transform:translateY(18px);} .reveal.visible{opacity:1; transform:translateY(0);}
+    @media (prefers-reduced-motion: reduce){
+      .reveal{opacity:1 !important; transform:none !important}
+      .card{transition:none}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html"><span class="brand-dot">●</span>Sergio Miranda Herrera</a>
+      <div>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">☰</button>
+        <button class="theme-toggle" id="themeBtn" aria-label="Toggle color theme">🌙</button>
+      </div>
+      <nav class="site-nav" aria-label="Primary">
+        <ul id="nav-menu" class="nav-list">
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#experience">Experience</a></li>
+          <li><a href="index.html#education">Education</a></li>
+          <li><a href="projects.html" aria-current="page">Projects</a></li>
+          <li><a href="index.html#volunteering">Volunteering</a></li>
+          <li><a href="index.html#skills">Skills</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="reveal">
+      <div class="card">
+        <div class="img-wrap">
+          <!-- Inline pixel-art SVG (always loads) -->
+          <svg class="pixel" viewBox="0 0 128 96" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges" preserveAspectRatio="xMidYMid meet">
+            <rect width="128" height="96" fill="#12161c"/>
+            <!-- dino body (greens) -->
+            <rect x="20" y="30" width="6" height="6" fill="#2ecc71"/>
+            <rect x="26" y="30" width="6" height="6" fill="#2ecc71"/>
+            <rect x="32" y="30" width="6" height="6" fill="#27ae60"/>
+            <rect x="20" y="36" width="6" height="6" fill="#2ecc71"/>
+            <rect x="26" y="36" width="6" height="6" fill="#27ae60"/>
+            <rect x="32" y="36" width="6" height="6" fill="#27ae60"/>
+            <rect x="20" y="42" width="6" height="6" fill="#2ecc71"/>
+            <rect x="26" y="42" width="6" height="6" fill="#27ae60"/>
+            <rect x="32" y="42" width="6" height="6" fill="#27ae60"/>
+            <rect x="38" y="36" width="6" height="6" fill="#27ae60"/>
+            <rect x="44" y="36" width="6" height="6" fill="#27ae60"/>
+            <rect x="50" y="36" width="6" height="6" fill="#27ae60"/>
+            <rect x="56" y="36" width="6" height="6" fill="#1e8449"/>
+            <rect x="38" y="42" width="6" height="6" fill="#27ae60"/>
+            <rect x="44" y="42" width="6" height="6" fill="#27ae60"/>
+            <rect x="50" y="42" width="6" height="6" fill="#27ae60"/>
+            <rect x="38" y="48" width="6" height="6" fill="#27ae60"/>
+            <rect x="44" y="48" width="6" height="6" fill="#27ae60"/>
+            <rect x="50" y="48" width="6" height="6" fill="#27ae60"/>
+            <rect x="56" y="48" width="6" height="6" fill="#1e8449"/>
+            <!-- eye -->
+            <rect x="50" y="32" width="4" height="4" fill="#0b0e11"/>
+            <!-- laptop -->
+            <rect x="70" y="46" width="26" height="18" fill="#cfd8e3"/>
+            <rect x="70" y="64" width="26" height="4" fill="#a8b3c4"/>
+            <rect x="72" y="48" width="22" height="12" fill="#0b0e11"/>
+            <!-- desk -->
+            <rect x="10" y="70" width="108" height="6" fill="#202733"/>
+          </svg>
+        </div>
+        <h1>Projects Coming Soon</h1>
+        <p class="lead">I’m building a few things worth showing. Check back soon.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer reveal">
+    <p>© <span id="year"></span> Sergio Miranda Herrera. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // theme memory
+    const saved = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if(saved){ document.body.classList.toggle('light', saved === 'light'); }
+    else { document.body.classList.toggle('light', !prefersDark); }
+
+    // menu toggle
+    const toggle=document.querySelector('.nav-toggle');
+    const menu=document.getElementById('nav-menu');
+    if(toggle){ toggle.addEventListener('click',()=>{const open=menu.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));}); }
+
+    // theme toggle btn
+    const themeBtn=document.getElementById('themeBtn');
+    function setThemeIcon(){ if(themeBtn) themeBtn.textContent=document.body.classList.contains('light')?'🌞':'🌙'; }
+    setThemeIcon();
+    if(themeBtn){ themeBtn.addEventListener('click',()=>{document.body.classList.toggle('light');localStorage.setItem('theme',document.body.classList.contains('light')?'light':'dark');setThemeIcon();}); }
+
+    // reveal loop
+    const prefersReduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!prefersReduce){
+      const io=new IntersectionObserver((es)=>es.forEach(e=>{e.target.classList.toggle('visible',e.isIntersecting)}),{threshold:.12});
+      document.querySelectorAll('.reveal,.card').forEach(el=>io.observe(el));
+    }
+
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>
